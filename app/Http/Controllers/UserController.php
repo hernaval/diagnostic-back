@@ -99,7 +99,7 @@ class UserController extends Controller
         return response()->json([
             'message' => "user registered",
             "data" => $newUser
-        ]);
+        ]);//
 
     }
 
