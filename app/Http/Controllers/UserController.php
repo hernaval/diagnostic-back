@@ -123,6 +123,7 @@ class UserController extends Controller
         \Mail::to($maildata["username"])->send(new \App\Mail\SendCode($maildata));
         
         $user->codeConfirmUser = $newCode;
+        $user->save();
 
         return response()->json(['message' => "code send"]);
 
