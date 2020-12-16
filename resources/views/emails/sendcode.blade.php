@@ -19,7 +19,7 @@
                  veuillez votre code d'activation utilisable une seule fois.
             </p>
         <p >Email : <span style="font-weigth : bold;font-size : 18px">{{$data["username"]}}</span> </p>
-        <p>Code d'activation : {{$data['code']}} </p>
+        <p>Code d'activation : <span style="font-weigth : bold;font-size : 18px"> {{$data['code']}} </span>  </p>
             
         <p>Merci.</p>
         </div>
