@@ -24,9 +24,9 @@ Route::group(['prefix' => 'user' ,'middleware' => 'api'], function () {
     
     Route::post("signup","UserController@register");
     Route::post("login","UserController@login");
-    Route::post("resend/{email}","UserController@resend");
+    Route::post("resend","UserController@resend");
     
-    Route::get("confirmation","UserController@confirm");
+    Route::put("confirmation","UserController@confirm");
 
     Route::post("dimension","DimensionController@create");
     Route::get("dimension","DimensionController@index");

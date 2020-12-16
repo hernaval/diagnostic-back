@@ -60,7 +60,29 @@ class User extends Authenticatable  implements JWTSubject
           
             ])->first();
         
-        return $user->codeConfirmUser != "";
+        return $user->codeConfirmUser == "";
+    }
+
+    public function getByEmail($email)
+    {
+       return  User::where([
+            'email' => $email,
+          
+        ])->first();
+
+    }
+    public function tryConfirUserAndResetCode($user, $code)
+    {
+        $u = User::find($user);
+        
+        if($u->codeConfirmUser == $code){
+            $u->codeConfirmUser = "";
+            $u->save();
+
+            return true;
+        }
+
+        return false;
     }
 
     public static function randomPass($n){

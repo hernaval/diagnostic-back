@@ -18,7 +18,7 @@
             <p >ACADYS DIAGNOSTIC vous remercie de votre inscription,
                  veuillez votre code d'activation utilisable une seule fois.
             </p>
-        <p >Email : <span style="font-weigth : bold;font-size : 18px">{{$user["username"]}}</span> </p>
+        <p >Email : <span style="font-weigth : bold;font-size : 18px">{{$data["username"]}}</span> </p>
         <p>Code d'activation : {{$data['code']}} </p>
             
         <p>Merci.</p>

@@ -11,7 +11,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'signup']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register',"confirm","resend"]]);
     }
 
     public function index(){
@@ -80,6 +80,7 @@ class UserController extends Controller
         if($isUserExist){
             return response()->json(['error' => 'user exist']);
         }
+
         $code = User::randomPass(6);
 
         $newUser = User::create(array_merge(
@@ -103,14 +104,45 @@ class UserController extends Controller
 
     }
 
-    public function resend()
+    public function resend(Request $req)
     {
+        $validator = Validator::make($req->all(),[
+            'email' => "required|email"
+        ]);
+
+        $u = new User;
+        $email = $req->email;
+        $user = $u->getByEmail($email);
+
+        $newCode = User::randomPass(6);
+
+        $maildata["fullname"] =$user->prenomUser." ".$user->nomUser;
+        $maildata["username"] = $req->email;
+        $maildata["code"] = $newCode;
+
+        \Mail::to($maildata["username"])->send(new \App\Mail\SendCode($maildata));
+        
+        $user->codeConfirmUser = $newCode;
+
+        return response()->json(['message' => "code send"]);
 
     }
 
-    public function confirmation()
+    public function confirm(Request $req)
     {
+        
+        $u = new User;
+        $email = $req->email;
+        $user = $u->getByEmail($email);
+        $code =$req->codeConfirmUser;
+        $isConfirm = $u->tryConfirUserAndResetCode($user->id,$code);
 
+        if(!$isConfirm){
+            return response()->json(['error' => "wrong code"]);
+        }
+
+        return response()->json(['message' => "can login"]);
+        
     }
 
 
