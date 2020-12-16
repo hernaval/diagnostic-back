@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::group(['prefix' => 'user' ,'middleware' => 'api'], function () {
+Route::group(['prefix' => 'user' ,'middleware' =>[ 'api','cors']], function () {
 
     Route::get("","UserController@index");
     
