@@ -12,7 +12,7 @@
         </div>
 
         <div>
-        <p>Bonjour, {{$data["fullname"]}}</p>
+     
    
         <p >@lang('firstmail.merci')</p>
             <p >ACADYS DIAGNOSTIC vous remercie de votre inscription,
