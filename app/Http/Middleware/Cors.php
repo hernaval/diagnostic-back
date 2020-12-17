@@ -21,7 +21,7 @@ class Cors
         //  header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
     
          return $next($request)
-            ->header('Access-Control-Allow-Origin', 'https://api.diagnosticcom.lech0958.odns.fr/*')
+            ->header('Access-Control-Allow-Origin', 'https://api.diagnosticcom.lech0958.odns.fr/public/api/*')
             ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
             ->header('Access-Control-Allow-Headers','Accept, Origin, Content-Type,X-Requested-With, X-Auth-Token,Authorization');
        
