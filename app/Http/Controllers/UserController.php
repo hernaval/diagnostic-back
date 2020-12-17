@@ -42,19 +42,19 @@ class UserController extends Controller
             return response()->json(['error' => 'user not exist']);
         }
 
-        $isUserConfirm = $user->isUserEmailConfirm($email);
-
-        if(!$isUserConfirm){
-            return response()->json(['error' => 'user not confirm']);
-        }
-
         
          if (! $token = auth('api')->attempt($validator->validated()) ) {
              return response()->json(['error' => 'wrong password'], 401);
+         }else{
+
+            $isUserConfirm = $user->isUserEmailConfirm($email);
+
+            if(!$isUserConfirm){
+                return response()->json(['error' => 'user not confirm']);
+            }
+             
+            return $this->createNewToken($token);
          }
-
-         return $this->createNewToken($token);
-
 
     }
 
