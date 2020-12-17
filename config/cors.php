@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['http://api.diagnosticcom.lech0958.odns.fr'],
 
     'allowed_origins_patterns' => [],
 
