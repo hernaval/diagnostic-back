@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::group(['prefix' => 'user' ,'middleware' => 'api'], function () {
-    
+Route::group(['prefix' => 'user' ,'middleware' => ['cors']], function () {
+
     // header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
     // header('Access-Control-Allow-Headers: Content-Type, Authorizations');
     
     Route::get("","UserController@index");
     
-    Route::post("signup","UserController@register")->middleware("cors");
+    Route::post("signup","UserController@register");
     Route::post("login","UserController@login");
     Route::post("resend","UserController@resend");
     
