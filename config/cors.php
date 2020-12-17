@@ -17,7 +17,7 @@ return [
 
     'paths' => ['/*'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['GET','POST','PUT','OPTIONS'],
 
     'allowed_origins' => ['http://api.diagnosticcom.lech0958.odns.fr'],
 
