@@ -15,10 +15,9 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
-header('Access-Control-Allow-Origin: *');
-header('Acess-Control-Allow-Origin: Content-type, X-Auth-Token, Authorization, Origin');
-header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorizations');
+// header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
+// header('Access-Control-Allow-Headers: Content-Type, Authorizations');
 
 /*
 |--------------------------------------------------------------------------
