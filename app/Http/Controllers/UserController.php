@@ -44,7 +44,7 @@ class UserController extends Controller
 
         
          if (! $token = auth('api')->attempt($validator->validated()) ) {
-             return response()->json(['error' => 'wrong password'], 401);
+             return response()->json(['error' => 'wrong password']);
          }else{
 
             $isUserConfirm = $user->isUserEmailConfirm($email);
