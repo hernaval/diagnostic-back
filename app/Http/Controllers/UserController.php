@@ -141,6 +141,7 @@ class UserController extends Controller
         
         $u = new User;
         $email = $req->email;
+        $password = $req->password;
         $user = $u->getByEmail($email);
         $code =$req->codeConfirmUser;
         $isConfirm = $u->tryConfirUserAndResetCode($user->id,$code);
@@ -149,7 +150,9 @@ class UserController extends Controller
             return response()->json(['error' => "wrong code"]);
         }
 
-        return response()->json(['message' => "can login"]);
+        $token = auth('api')->attempt($validator->validated());
+
+        return $this->createNewToken($token);
         
     }
 
