@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::group(['prefix' => 'user' ,'middleware' => 'api'], function () {
-    header('Access-Control-Allow-Origin: *');
+    
     // header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
     // header('Access-Control-Allow-Headers: Content-Type, Authorizations');
     
