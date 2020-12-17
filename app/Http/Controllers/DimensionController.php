@@ -19,7 +19,7 @@ class DimensionController extends Controller
 
     public function index()
     {
-
+        
     }
 
 
