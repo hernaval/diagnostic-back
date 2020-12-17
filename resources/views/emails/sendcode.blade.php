@@ -14,7 +14,7 @@
         <div>
      
    
-        <p >@lang('firstmail.merci')</p>
+       
             <p >ACADYS DIAGNOSTIC vous remercie de votre inscription,
                  veuillez votre code d'activation utilisable une seule fois.
             </p>
