@@ -21,9 +21,9 @@ class Cors
         //  header('Access-Control-Allow-Headers: Accept, Origin, Content-Type,X-Requested-With, X-Auth-Token,Authorization');
     
          return $next($request)
-            // ->header('Access-Control-Allow-Origin', '*')
-            // ->header('Access-Control-Allow-Methods', 'POST,GET, PUT, DELETE, OPTIONS')
-            // ->header('Access-Control-Allow-Headers','Accept, Origin, Content-Type,X-Requested-With, X-Auth-Token,Authorization');
+             ->header('Access-Control-Allow-Origin', '*')
+             ->header('Access-Control-Allow-Methods', 'POST,GET, PUT, DELETE, OPTIONS')
+             ->header('Access-Control-Allow-Headers','Accept, Origin, Content-Type,X-Requested-With, X-Auth-Token,Authorization');
         ;
     }
 }
