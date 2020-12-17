@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::group(['prefix' => 'user' ,'middleware' => ['cors']], function () {
+Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
 
     // header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
     // header('Access-Control-Allow-Headers: Content-Type, Authorizations');
