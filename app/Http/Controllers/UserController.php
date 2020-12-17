@@ -139,7 +139,8 @@ class UserController extends Controller
     public function confirm(Request $req)
     {
         $validator = Validator::make($req->all(),[
-            'email' => "required|email"
+            'email' => "required|email",
+            'password' => "required"
         ]);
 
         $u = new User;
