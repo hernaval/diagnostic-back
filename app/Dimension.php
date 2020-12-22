@@ -41,8 +41,9 @@ class Dimension extends Model
         $dimensionToUpdate->reponse1 = $data['reponse1'];
         $dimensionToUpdate->reponse2 = $data['reponse2'];
         $dimensionToUpdate->reponse3 = $data['reponse3'];
+        
 
-        return $dimensionToUpdate;
+        return $dimensionToUpdate->save();
     }
 
     public function createAndAsignUser($user,$question,$data)
