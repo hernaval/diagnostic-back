@@ -36,5 +36,10 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
 
 });
 
+Route::group(['prefix' => 'admin'],function(){
+    Route::group(['prefix' => 'user'], function () {
+        Route::apiResource("","Admin/AdminUserController");
+    });
+});
 
-Route::apiResource("test","UserController");
+

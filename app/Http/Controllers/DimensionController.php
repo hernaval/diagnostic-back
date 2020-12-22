@@ -40,7 +40,7 @@ class DimensionController extends Controller
         }
 
         $q = new Question;
-        $user_id = auth()->user()->id;
+        $user_id = auth('api')->user()->id;
         $question_id = $q->getByCate($req->nomDimension);
 
         $dim = new Dimension;
