@@ -11,16 +11,11 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register',"confirm","resend","index"]]);
+        $this->middleware('auth:api', ['except' => ['login', 'register',"confirm","resend"]]);
         
     }
 
-    public function index(){
-        
-        return response()->json(auth()->user());
-        
-    }
-
+    
     public function login(Request $req)
     {
         $input = $req->all();

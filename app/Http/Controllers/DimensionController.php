@@ -27,7 +27,7 @@ class DimensionController extends Controller
     {
         
         $validator = Validator::make($req->all(),[
-            'nomDimension' => 'required',
+            'dimension' => 'required',
             'reponse1' => 'required',
             'reponse2' => 'required',
             'reponse3' => 'required'
@@ -41,7 +41,7 @@ class DimensionController extends Controller
 
         $q = new Question;
         $user_id = auth('api')->user()->id;
-        $question_id = $q->getByCate($req->nomDimension);
+        $question_id = $q->getById($req->dimension);
 
         $dim = new Dimension;
         $newDimension = $dim->createAndAsignUser($user_id,$question_id, $validator->validated());

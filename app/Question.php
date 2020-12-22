@@ -18,4 +18,9 @@ class Question extends Model
     {
         return Question::where(['categorieQuestion' => $cate])->first()->id;
     }
+
+    public function getById($id)
+    {
+        return Question::find($id);
+    }
 }

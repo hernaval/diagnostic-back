@@ -23,7 +23,7 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
     // header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
     // header('Access-Control-Allow-Headers: Content-Type, Authorizations');
     
-    Route::get("","UserController@index");
+    
     
     Route::post("signup","UserController@register");
     Route::post("login","UserController@login");
@@ -34,11 +34,18 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
     Route::post("dimension","DimensionController@create");
     Route::get("dimension","DimensionController@index");
 
+
+    // api for user information
+    Route::get("","Users\InformationController@show");
+    Route::put("","Users\InformationController@update");
+    Route::delete("","Users\InformationController@destroy");
+    
+
 });
 
 Route::group(['prefix' => 'admin'],function(){
     Route::group(['prefix' => 'user'], function () {
-        Route::apiResource("","Admin/AdminUserController");
+        Route::apiResource("","Admin\AdminUserController");
     });
 });
 
