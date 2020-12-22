@@ -75,15 +75,15 @@ class Dimension extends Model
         while($i < 7){
 
             if($i > $responded - 1){
+                $formatted_dimension[$i][0] = null;
                 $formatted_dimension[$i][1] = null;
                 $formatted_dimension[$i][2] = null;
-                $formatted_dimension[$i][3] = null;
             }else{
                
 
-                $formatted_dimension[$i][1] =  (int) $reponse_for_7_dimensions[$i]->reponse1;
-                $formatted_dimension[$i][2] = (int) $reponse_for_7_dimensions[$i]->reponse2;
-                $formatted_dimension[$i][3] = (int) $reponse_for_7_dimensions[$i]->reponse3;
+                $formatted_dimension[$i][0] =  (int) $reponse_for_7_dimensions[$i]->reponse1;
+                $formatted_dimension[$i][1] = (int) $reponse_for_7_dimensions[$i]->reponse2;
+                $formatted_dimension[$i][2] = (int) $reponse_for_7_dimensions[$i]->reponse3;
             }
             $i++;
         }
