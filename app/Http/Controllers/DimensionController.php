@@ -44,7 +44,17 @@ class DimensionController extends Controller
         $question_id = $q->getById($req->dimension)->id;
 
         $dim = new Dimension;
-        $newDimension = $dim->createAndAsignUser($user_id,$question_id, $validator->validated());
+        $newDimension = null;
+
+        $isResponded = $dim->checkIfUserHasResponded($user_id,$question_id);
+
+        if(!$isResponded){   
+            $newDimension = $dim->createAndAsignUser($user_id,$question_id, $validator->validated());
+
+        }else{
+            $newDimension = $dim->update($user_id,$question_id, $validator->validated());
+        }
+
 
         return response()->json([
             'message' => "response send",
