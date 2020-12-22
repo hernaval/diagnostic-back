@@ -48,11 +48,13 @@ class DimensionController extends Controller
 
         $isResponded = $dim->checkIfUserHasResponded($user_id,$question_id);
 
+       
+
         if(!$isResponded){   
             $newDimension = $dim->createAndAsignUser($user_id,$question_id, $validator->validated());
 
         }else{
-            $newDimension = $dim->update($user_id,$question_id, $validator->validated());
+            $newDimension = $dim->updateDimension($user_id,$question_id, $validator->validated());
         }
 
 

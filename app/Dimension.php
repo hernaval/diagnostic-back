@@ -31,7 +31,7 @@ class Dimension extends Model
         ])->first() !== null ;
     }
 
-    public function update($user,$question,$data)
+    public function updateDimension($user,$question,$data)
     {
         $dimensionToUpdate = Dimension::where([
             'userId' =>$user,
@@ -41,8 +41,8 @@ class Dimension extends Model
         $dimensionToUpdate->reponse1 = $data['reponse1'];
         $dimensionToUpdate->reponse2 = $data['reponse2'];
         $dimensionToUpdate->reponse3 = $data['reponse3'];
-        
-        return $dimensionToUpdate->save();
+
+        return $dimensionToUpdate;
     }
 
     public function createAndAsignUser($user,$question,$data)
