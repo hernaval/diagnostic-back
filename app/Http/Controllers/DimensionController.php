@@ -13,13 +13,7 @@ class DimensionController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth:api');
-    }
-
-
-    public function index()
-    {
-        
+        $this->middleware('auth:api')->except(['show']);
     }
 
 
@@ -62,5 +56,15 @@ class DimensionController extends Controller
             'message' => "response send",
             "data" => $newDimension
         ]);
+    }
+
+    public function show()
+    {
+        $dim = new Dimension;
+        // $user = auth('api')->user()->id;
+         $user = 6;
+        $userDimension = $dim->userDimension($user);
+
+        return $userDimension;
     }
 }

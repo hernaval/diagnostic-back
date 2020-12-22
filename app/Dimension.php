@@ -58,4 +58,38 @@ class Dimension extends Model
             ]
         );
     }
+
+    public function userDimension($user)
+    {
+        $reponse_for_7_dimensions = Dimension::where(function($query) use($user){
+            $query->where('questionId','>',0)
+                  ->where('questionId','<',8)
+                  ->where('userId',$user)  ;
+        })->get();
+
+        $responded = count($reponse_for_7_dimensions);
+
+        $formatted_dimension;
+
+        $i =0;
+        while($i < 7){
+
+            if($i > $responded - 1){
+                $formatted_dimension[$i][1] = null;
+                $formatted_dimension[$i][2] = null;
+                $formatted_dimension[$i][3] = null;
+            }else{
+               
+
+                $formatted_dimension[$i][1] =  (int) $reponse_for_7_dimensions[$i]->reponse1;
+                $formatted_dimension[$i][2] = (int) $reponse_for_7_dimensions[$i]->reponse2;
+                $formatted_dimension[$i][3] = (int) $reponse_for_7_dimensions[$i]->reponse3;
+            }
+            $i++;
+        }
+
+       
+
+        return $formatted_dimension;
+    }
 }

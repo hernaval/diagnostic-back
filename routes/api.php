@@ -32,7 +32,7 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
     Route::put("confirmation","UserController@confirm");
 
     Route::post("dimension","DimensionController@create");
-    Route::get("dimension","DimensionController@index");
+    Route::get("dimension","DimensionController@show");
 
 
     // api for user information
