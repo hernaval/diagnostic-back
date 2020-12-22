@@ -41,7 +41,7 @@ class DimensionController extends Controller
 
         $q = new Question;
         $user_id = auth('api')->user()->id;
-        $question_id = $q->getById($req->dimension);
+        $question_id = $q->getById($req->dimension)->id;
 
         $dim = new Dimension;
         $newDimension = $dim->createAndAsignUser($user_id,$question_id, $validator->validated());
