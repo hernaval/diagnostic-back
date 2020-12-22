@@ -33,14 +33,16 @@ class Dimension extends Model
 
     public function update($user,$question,$data)
     {
-        return Dimension::where([
+        $dimensionToUpdate = Dimension::where([
             'userId' =>$user,
             "questionId" =>$question
-        ])->first()->update([
-            'reponse1' =>$data['reponse1'],
-            'reponse2' =>$data['reponse2'],
-            'reponse3' =>$data['reponse3']
-        ]);
+        ])->first();
+
+        $dimensionToUpdate->reponse1 = $data['reponse1'];
+        $dimensionToUpdate->reponse2 = $data['reponse2'];
+        $dimensionToUpdate->reponse3 = $data['reponse3'];
+        
+        return $dimensionToUpdate->save();
     }
 
     public function createAndAsignUser($user,$question,$data)
