@@ -55,20 +55,20 @@ class InformationController extends Controller
      */
     public function update(Request $req, $id =0)
     {
-        $validator =  Validator::make($req->all(),[
-            'nomUser' => 'required',
-            'prenomUser' => 'required',
-            'fonctionUser' => 'required',
-            'organisationUser' => 'required',
-            'email' => 'required|email',
-        ]);
+        // $validator =  Validator::make($req->all(),[
+        //     'nomUser' => 'required',
+        //     'prenomUser' => 'required',
+        //     'fonctionUser' => 'required',
+        //     'organisationUser' => 'required',
+        //     'email' => 'required|email',
+        // ]);
 
-        if($validator->fails()){
-            return response()->json($validator->errors(), 422);
-        }
+        // if($validator->fails()){
+        //     return response()->json($validator->errors(), 422);
+        // }
 
         $userToUpdate = auth('api')->user();
-        $userToUpdate->update($validator->validated());
+        $userToUpdate->update($req->all());
 
         return response()->json([
             'data' => $userToUpdate
