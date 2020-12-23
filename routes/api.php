@@ -33,6 +33,7 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
 
     Route::post("dimension","DimensionController@create");
     Route::get("dimension","DimensionController@show");
+    Route::delete("dimension","DimensionController@destroy");
 
 
     // api for user information

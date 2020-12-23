@@ -85,6 +85,7 @@ class User extends Authenticatable  implements JWTSubject
         return false;
     }
 
+  
     public static function randomPass($n){
         $characters = '0123456789'; 
         $randomString = ''; 

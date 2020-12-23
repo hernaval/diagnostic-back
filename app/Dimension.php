@@ -59,7 +59,7 @@ class Dimension extends Model
         );
     }
 
-    public function userDimension($user)
+    public function userLastDimension($user)
     {
         $reponse_for_7_dimensions = Dimension::where(function($query) use($user){
             $query->where('questionId','>',0)
@@ -91,5 +91,25 @@ class Dimension extends Model
        
 
         return $formatted_dimension;
+    }
+
+    public function userDimension($user)
+    {
+        return  Dimension::where(function($query) use($user){
+            $query->where('questionId','>',0)
+                  ->where('questionId','<',8)
+                  ->where('userId',$user)  ;
+        })->get();
+    }
+
+    public function deleteUserDimension ($user)
+    {
+        $dimension = Dimension::where(function($query) use($user){
+            $query->where('questionId','>',0)
+                  ->where('questionId','<',8)
+                  ->where('userId',$user)  ;
+        })->delete();
+
+        return true;
     }
 }

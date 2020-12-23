@@ -13,7 +13,7 @@ class DimensionController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['show']);
+        $this->middleware('auth:api');
     }
 
 
@@ -61,10 +61,29 @@ class DimensionController extends Controller
     public function show()
     {
         $dim = new Dimension;
-        // $user = auth('api')->user()->id;
-         $user = 6;
-        $userDimension = $dim->userDimension($user);
+         $user = auth('api')->user()->id;
+         //$userDimension =null;
+
+         if(request()->last){
+            $userDimension = $dim->userLastDimension($user);
+         }else{
+            $userDimension = $dim->userDimension($user);
+         }
+       
+        
 
         return $userDimension;
+    }
+
+    public function destroy()
+    {
+        $dim = new Dimension;
+        $user = auth('api')->user()->id;
+        $dim->deleteUserDimension($user);
+
+        return response()->json([
+            'data' => "dimension deleted"
+        ]);
+        
     }
 }
