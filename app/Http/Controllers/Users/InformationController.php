@@ -68,6 +68,7 @@ class InformationController extends Controller
         //     return response()->json($validator->errors(), 422);
         // }
 
+        //
         $userToUpdate = auth('api')->user();
         $userToUpdate->update($req->all());
 
