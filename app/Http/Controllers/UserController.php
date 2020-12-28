@@ -168,7 +168,21 @@ class UserController extends Controller
         $email = $req->email;
         $f = new Forgot;
         $u = new User;
+        
         $user = $u->getByEmail($email);
+
+        $isUserExist = $user->isUserEmailExist($email);
+
+        if($isUserExist){
+
+            $isUserNotConfirm = $user->isUserEmailConfirm($email);
+            if(!$isUserNotConfirm){
+                return response()->json(['error' => 'user not confirm']);
+            }
+
+            return response()->json(['error' => 'user exist']);
+        }
+
         $token = $u->encryption();
 
         $data['userId'] =$user->id;
