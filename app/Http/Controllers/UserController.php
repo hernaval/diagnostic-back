@@ -222,6 +222,9 @@ class UserController extends Controller
                 'error' => "token not valid"
             ]);
         }
+
+        
+
         return response()->json([
             'success' => true,
             "data" => "token valid"
@@ -250,6 +253,10 @@ class UserController extends Controller
         $user->save();
 
         $f->deleteByToken($token);
+        $email  = $user->email;
+
+        \Mail::to($email)->send(new \App\Mail\ReinitialisationReussie());
+
 
         return response()->json([
             'success' => "reset success",
