@@ -173,14 +173,14 @@ class UserController extends Controller
 
         $isUserExist = $user->isUserEmailExist($email);
 
-        if($isUserExist){
+        if(!$isUserExist){
 
             $isUserNotConfirm = $user->isUserEmailConfirm($email);
             if(!$isUserNotConfirm){
                 return response()->json(['error' => 'user not confirm']);
             }
 
-            return response()->json(['error' => 'user exist']);
+            return response()->json(['error' => 'user not exist']);
         }
 
         $token = $u->encryption();
