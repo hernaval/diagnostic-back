@@ -23,13 +23,15 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
     // header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
     // header('Access-Control-Allow-Headers: Content-Type, Authorizations');
     
-    
-    
     Route::post("signup","UserController@register");
     Route::post("login","UserController@login");
     Route::post("resend","UserController@resend");
     
     Route::put("confirmation","UserController@confirm");
+
+    Route::post("forgot","UserController@forgotPassword");
+    Route::get("forgot","UserController@validateToken");
+    Route::put("forgot","UserController@resetPassword");
 
     Route::post("dimension","DimensionController@create");
     Route::get("dimension","DimensionController@show");

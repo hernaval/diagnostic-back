@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('organisationUser');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string("codeConfirmUser");
+            $table->string("codeConfirmUser")->nullable();
             $table->string("social")->nullable();
             $table->timestamps();
         });

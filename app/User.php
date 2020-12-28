@@ -98,6 +98,21 @@ class User extends Authenticatable  implements JWTSubject
         return $randomString; 
     }
 
+    public function encryption()
+    {
+        $token = '_$ey_';
+        $characters = 'abc!defghijklmnop?qrstuvwxyz!$?1234567890'; 
+        $randomString = ''; 
+
+        for ($i = 0; $i < 150; $i++) { 
+            $index = rand(0, strlen($characters) - 1); 
+            $randomString .= $characters[$index]; 
+        } 
+  
+        return  ($token .= $randomString);
+
+    }
+
     public function getJWTIdentifier() {
         return $this->getKey();
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Forgot;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -11,7 +12,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register',"confirm","resend"]]);
+        $this->middleware('auth:api', ['except' => ['login', 'register',"confirm","resend","forgotPassword",'validateToken','resetPassword']]);
         
     }
 
@@ -152,6 +153,95 @@ class UserController extends Controller
         $token = auth('api')->attempt($validator->validated());
 
         return $this->createNewToken($token);
+        
+    }
+
+    public function forgotPassword(Request $req)
+    {
+        $validator = Validator::make($req->all(),[
+            'email' => 'required|email'
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());
+        }
+        $email = $req->email;
+        $f = new Forgot;
+        $u = new User;
+        $user = $u->getByEmail($email);
+        $token = $u->encryption();
+
+        $data['userId'] =$user->id;
+        $data['token'] = $token;
+    
+
+        $forgotInfo = $f->createForgotTokenLink($data);
+
+        \Mail::to($email)->send(new \App\Mail\ResetPassword($data));
+
+        return response()->json([
+            'data' => "email send"
+        ]);
+
+        
+    }
+
+    public function validateToken(Request $req)
+    {
+        $validator = Validator::make($req->all(),[
+            'token' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());
+        }
+        $f = new Forgot;
+        $token = $req->token;
+        
+
+        $isValidToken = $f->isValid($token);
+
+      
+
+        if(!$isValidToken){
+            return response()->json([
+                'error' => "token not valid"
+            ]);
+        }
+        return response()->json([
+            'success' => true,
+            "data" => "token valid"
+        ]);
+    }
+
+    public function resetPassword(Request $req)
+    {
+        $validator = Validator::make($req->all(),[
+            'password' => 'required|min:8',
+            'token' =>'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());
+        }
+
+        $f = new Forgot;
+        $token = $req->token;
+
+        $userToUpdt = $f->getUserByToken($token);
+
+        $user = User::find($userToUpdt->userId);
+ 
+        $user->password = bcrypt($req->password);
+        $user->save();
+
+        $f->deleteByToken($token);
+
+        return response()->json([
+            'success' => "reset success",
+            'data' => $user
+        ]);
+
         
     }
 
