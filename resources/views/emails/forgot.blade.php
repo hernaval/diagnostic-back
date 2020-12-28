@@ -16,9 +16,9 @@
    
        
         <p >
-            Cliquez sur le lien ci-dessous temporaire pour réinitisaliser votre mot de passe.
+            Cliquez sur le lien temporaire ci-dessous  pour réinitisaliser votre mot de passe.
         </p>
-        <p>Lien : <a href="http://diagnosticcom.lech0958.odns.fr/reinitialisation?token={{$data['token']}}"> Lien de réinialisation</a>  </p>
+        <p>Suivez: <a href="http://diagnosticcom.lech0958.odns.fr/reinitialisation?token={{$data['token']}}"> Lien de réinialisation</a>  </p>
             
         <p>Merci.</p>
         </div>
