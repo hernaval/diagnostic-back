@@ -38,12 +38,21 @@ class Dimension extends Model
             "questionId" =>$question
         ])->first();
 
-        $dimensionToUpdate->reponse1 = $data['reponse1'];
-        $dimensionToUpdate->reponse2 = $data['reponse2'];
-        $dimensionToUpdate->reponse3 = $data['reponse3'];
-        
+      
+            if(array_key_exists("reponse1",$data)){
+                $dimensionToUpdate->reponse1 = $data['reponse1'];
+                $dimensionToUpdate->reponse2 = $data['reponse2'];
+                $dimensionToUpdate->reponse3 = $data['reponse3'];
+    
+               
+            }else{
+                $dimensionToUpdate->reponse1 = null;
+                $dimensionToUpdate->reponse2 = null;
+                $dimensionToUpdate->reponse3 = null;
+            }
 
-        return $dimensionToUpdate->save();
+         return $dimensionToUpdate->save();
+        
     }
 
     public function createAndAsignUser($user,$question,$data)
