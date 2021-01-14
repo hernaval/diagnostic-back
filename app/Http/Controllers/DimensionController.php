@@ -21,7 +21,10 @@ class DimensionController extends Controller
     {
         
         $validator = Validator::make($req->all(),[
-            'dimension' => 'required'
+            'dimension' => 'required',
+            'reponse1' => "required",
+            'reponse2' => "required",
+            "reponse3" => "required"
         ]);
 
         
