@@ -15,9 +15,9 @@ class DimensionTable extends Migration
     {
         Schema::create('dimension', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("reponse1");
-            $table->string("reponse2");
-            $table->string("reponse3");
+            $table->string("reponse1")->nullable();
+            $table->string("reponse2")->nullable();
+            $table->string("reponse3")->nullable();
             $table->timestamps();
         });
     }
