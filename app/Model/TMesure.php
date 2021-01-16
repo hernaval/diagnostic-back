@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TMesure extends Model
 {
-    protected $table = 'tmesure';
+    protected $table = 'TMesure';
     protected $guarded = [''];
 
     public function tDimension()

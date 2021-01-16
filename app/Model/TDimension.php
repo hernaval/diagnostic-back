@@ -9,7 +9,7 @@ use TRestitution;
 
 class TDimension extends Model
 {
-    protected $table = 'tdimension';
+    protected $table = 'TDimension';
     protected $guarded = [''];
 
     public function tQuestionnaire()

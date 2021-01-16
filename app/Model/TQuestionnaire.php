@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TQuestionnaire extends Model
 {
-    protected $table = 'tquestionnaire';
+    protected $table = 'TQuestionnaire';
     protected $guarded = [''];
 
     public function tDimensions()

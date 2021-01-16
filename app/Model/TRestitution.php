@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TRestitution extends Model
 {
-    protected $table = 'trestitution';
+    protected $table = 'TRestitution';
     protected $guarded = [''];
 
     public function user()
