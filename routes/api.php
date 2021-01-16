@@ -37,6 +37,8 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
     Route::get("dimension","DimensionController@show");
     Route::delete("dimension","DimensionController@destroy");
 
+    Route::post("restitution","RestitutionController@create");
+
 
     // api for user information
     Route::get("","Users\InformationController@show");
@@ -49,6 +51,10 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
 Route::group(['prefix' => 'admin'],function(){
     Route::group(['prefix' => 'user'], function () {
         Route::apiResource("","Admin\AdminUserController");
+    });
+
+    Route::group(['prefix' => 'statistiques'], function () {
+        Route::get("restitution/{id}","Admin\StatistiqueController@statByDimension");
     });
 });
 

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use \App\Dimension;
+use Model\TRestitution;
 use \App\Question;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -43,10 +44,17 @@ class User extends Authenticatable  implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
+    public function tRestitutions()
+    {
+        return $this->hasMany(TRestitution::class);
+    }
+
     public function dimensions()
     {
         return $this->hasMany(Dimension::class);
     }
+
+
 
     public function isUserEmailExist($email)
     {
@@ -125,4 +133,9 @@ class User extends Authenticatable  implements JWTSubject
     public function getJWTCustomClaims() {
         return [];
     }    
+
+    public static function userConnectedId()
+    {
+        return auth('api')->user()->id;
+    }
 }
