@@ -23,9 +23,9 @@ class MesureRepositoryImpl extends BaseRepository implements MesureRepository
    {
     return DB::table('tmesure')
         ->join('trestitution', 'tmesure.id', '=', 'trestitution.tMesureId')
-        ->select('trestitution.value',DB::raw('count(trestitution.value) as total' ) )
+        ->select('tmesure.id','trestitution.value',DB::raw('count(trestitution.value) as total' ) )
         ->where('trestitution.tDimensionId',$id)
-        ->groupBy("trestitution.value")
+        ->groupBy('tmesure.id',"trestitution.value")
         ->get();
         ;
    }

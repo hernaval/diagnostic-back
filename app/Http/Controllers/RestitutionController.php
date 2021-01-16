@@ -17,7 +17,7 @@ class RestitutionController extends Controller
      RestitutionRepository $restitutionRepo
      )
     {
-        $this->middleware("api");
+        $this->middleware("api",['expect' =>["create"]]);
         $this->userRepository = $userRepository;
         $this->restitutionRepo = $restitutionRepo;
       

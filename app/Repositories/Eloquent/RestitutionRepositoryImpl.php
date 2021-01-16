@@ -23,34 +23,24 @@ class RestitutionRepositoryImpl extends BaseRepository implements RestitutionRep
    {
 
     $mesures = $data["mesures"];
+    $bulk = [] ;
 
-    for($i = 0; $i < count($mesures)  ; $i++){
-        $this->model->create([
+
+    for($i = 0; $i < count($mesures) ; $i++){
+        array_push($bulk, [
             'tDimensionId' => $data['dimension'],
             'tMesureId' => $mesures[$i]["id"],
             'value' => $mesures[$i]['value'],
             'userId' => auth('api')->user()->id
+          
         ]);
+        
     }
+
+     $this->model->insert($bulk);
 
     
    }
 
-   public function statByDimensions($id)
-    {
-        
-        return $this->model
-        ->select(DB::raw('count(*) as total' ),"value","tMesureId")
-        ->where([
-            'tDimensionId' =>$id,
-            'tMesureId' => 1
-        ])
-        ->orderBy("value","asc")
-        ->groupBy("value","tMesureId")
-        ->get();
-        
-    }
-
-    
 
 }

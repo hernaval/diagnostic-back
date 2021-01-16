@@ -8,5 +8,4 @@ interface RestitutionRepository
    //public function all(): Collection;
    public function addOrUpdateResponse(array $data) ;
 
-   public function statByDimensions($dimensionId);
 }
