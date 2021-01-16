@@ -13,6 +13,7 @@ class TMesure extends Migration
      */
     public function up()
     {
+        //
         Schema::create('TMesure', function (Blueprint $table) {
             $table->increments("id");
             $table->text("phraseMesure");
