@@ -21,11 +21,11 @@ class MesureRepositoryImpl extends BaseRepository implements MesureRepository
 
    public function  statRestitutionByDimension($id)
    {
-    return DB::table('tmesure')
-        ->join('trestitution', 'tmesure.id', '=', 'trestitution.tMesureId')
-        ->select('tmesure.id','trestitution.value',DB::raw('count(trestitution.value) as total' ) )
-        ->where('trestitution.tDimensionId',$id)
-        ->groupBy('tmesure.id',"trestitution.value")
+    return DB::table('TMesure')
+        ->join('TRestitution', 'TMesure.id', '=', 'TRestitution.tMesureId')
+        ->select('TMesure.id','TRestitution.value',DB::raw('count(TRestitution.value) as total' ) )
+        ->where('TRestitution.tDimensionId',$id)
+        ->groupBy('TMesure.id',"Trestitution.value")
         ->get();
         ;
    }
