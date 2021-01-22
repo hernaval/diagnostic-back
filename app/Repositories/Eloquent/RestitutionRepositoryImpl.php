@@ -25,6 +25,16 @@ class RestitutionRepositoryImpl extends BaseRepository implements RestitutionRep
     $mesures = $data["mesures"];
     $bulk = [] ;
 
+    $response =  $this->model->where(function ($query) use ($data){
+        $query
+        ->where("userId",auth('api')->user()->id)
+        ->where("tDimensionId",$data["dimension"])
+        ;
+    });
+
+    if(count($response->get()) > 0){
+       $response->delete();
+    }
 
     for($i = 0; $i < count($mesures) ; $i++){
         array_push($bulk, [
@@ -39,7 +49,7 @@ class RestitutionRepositoryImpl extends BaseRepository implements RestitutionRep
 
      $this->model->insert($bulk);
 
-    
+
    }
 
    public function userMaturiteRestitution()
@@ -48,49 +58,49 @@ class RestitutionRepositoryImpl extends BaseRepository implements RestitutionRep
 
        $reponse_for_1 =  $this->model->where(function ($query) use ($param){
         $query
-        ->where("userId",7)
+        ->where("userId",auth('api')->user()->id)
         ->where("tDimensionId",1)
         ;
     })->get();
 
     $reponse_for_2 =  $this->model->where(function ($query) use ($param){
         $query
-        ->where("userId",7)
+        ->where("userId",auth('api')->user()->id)
         ->where("tDimensionId",2)
         ;
     })->get();
 
     $reponse_for_3 =  $this->model->where(function ($query) use ($param){
         $query
-        ->where("userId",7)
+        ->where("userId",auth('api')->user()->id)
         ->where("tDimensionId",3)
         ;
     })->get();
 
     $reponse_for_4 =  $this->model->where(function ($query) use ($param){
         $query
-        ->where("userId",7)
+        ->where("userId",auth('api')->user()->id)
         ->where("tDimensionId",4)
         ;
     })->get();
 
     $reponse_for_5 =  $this->model->where(function ($query) use ($param){
         $query
-        ->where("userId",7)
+        ->where("userId",auth('api')->user()->id)
         ->where("tDimensionId",5)
         ;
     })->get();
 
     $reponse_for_6 =  $this->model->where(function ($query) use ($param){
         $query
-        ->where("userId",7)
+        ->where("userId",auth('api')->user()->id)
         ->where("tDimensionId",6)
         ;
     })->get();
 
     $reponse_for_7 =  $this->model->where(function ($query) use ($param){
         $query
-        ->where("userId",7)
+        ->where("userId",auth('api')->user()->id)
         ->where("tDimensionId",7)
         ;
     })->get();
@@ -203,7 +213,7 @@ class RestitutionRepositoryImpl extends BaseRepository implements RestitutionRep
 
        // }
 
-       return $formatted_dimension2;
+       return $formatted_dimension2 ;
        
    }
 
@@ -214,21 +224,21 @@ class RestitutionRepositoryImpl extends BaseRepository implements RestitutionRep
 
     $reponse_for_1 =  $this->model->where(function ($query) use ($param){
         $query
-        ->where("userId",7)
+        ->where("userId",auth('api')->user()->id)
         ->where("tDimensionId",8)
         ;
     })->get();
 
     $reponse_for_2 =  $this->model->where(function ($query) use ($param){
         $query
-        ->where("userId",7)
+        ->where("userId",auth('api')->user()->id)
         ->where("tDimensionId",9)
         ;
     })->get();
 
     $reponse_for_3 =  $this->model->where(function ($query) use ($param){
         $query
-        ->where("userId",7)
+        ->where("userId",auth('api')->user()->id)
         ->where("tDimensionId",10)
         ;
     })->get();
