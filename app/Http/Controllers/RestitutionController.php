@@ -17,12 +17,11 @@ class RestitutionController extends Controller
      RestitutionRepository $restitutionRepo
      )
     {
-        $this->middleware("api");
+        $this->middleware("api",["expect" =>["last"]]);
         $this->userRepository = $userRepository;
         $this->restitutionRepo = $restitutionRepo;
       
     }
-
 
     public function create(Request $req)
     {
@@ -39,5 +38,21 @@ class RestitutionController extends Controller
         $this->restitutionRepo->addOrUpdateResponse($validator->validated());
 
         return response()->json("ok");
+    }
+
+    public function last()
+    {
+        $question = request()->questionnaire;
+        $restitution = null;
+      
+        if($question =="maturite"){
+           
+            $restitution = $this->restitutionRepo->userMaturiteRestitution();
+        }else{
+            $restitution = $this->restitutionRepo->userVisionResitution();
+        }
+       
+
+        return response()->json($restitution);
     }
 }

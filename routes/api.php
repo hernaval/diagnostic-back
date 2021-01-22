@@ -38,6 +38,7 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
     Route::delete("dimension","DimensionController@destroy");
 
     Route::post("restitution","RestitutionController@create");
+    Route::get("restitution","RestitutionController@last");
 
 
     // api for user information
