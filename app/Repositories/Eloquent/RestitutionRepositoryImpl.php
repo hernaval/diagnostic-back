@@ -288,5 +288,28 @@ class RestitutionRepositoryImpl extends BaseRepository implements RestitutionRep
     return $formatted_dimension;
    }
 
+   public function deleteUserRestitution($question)
+   {
+       $param = 2;
+       if($question == "maturite"){
+        $this->model->where(function ($query) use ($param){
+            $query
+            ->where("userId",auth('api')->user()->id)
+            ->where("tDimensionId",">",0)
+            ->where("tDimensionId","<",8)
+            ;
+        })->delete();
+       }
+       if($question == "vision"){
+        $this->model->where(function ($query) use ($param){
+            $query
+            ->where("userId",auth('api')->user()->id)
+            ->where("tDimensionId",">",8)
+            ->where("tDimensionId","<",11)
+            ;
+        })->delete();
+       }
+   }
+
 
 }

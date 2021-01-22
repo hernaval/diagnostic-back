@@ -39,6 +39,7 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
 
     Route::post("restitution","RestitutionController@create");
     Route::get("restitution","RestitutionController@last");
+    Route::delete("restitution","ResitutionController@destroy");
 
 
     // api for user information

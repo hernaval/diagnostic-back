@@ -55,4 +55,14 @@ class RestitutionController extends Controller
 
         return response()->json($restitution);
     }
+
+    public function destroy()
+    {
+        $question = request()->questionnaire;
+
+        
+            $this->restitutionRepo->deleteUserRestitution($question);
+        
+            return response()->json("ok deleted");
+    }
 }
