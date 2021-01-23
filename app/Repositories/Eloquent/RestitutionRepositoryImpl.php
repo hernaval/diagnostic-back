@@ -300,7 +300,7 @@ class RestitutionRepositoryImpl extends BaseRepository implements RestitutionRep
         $this->model->where(function ($query) use ($param){
             $query
             ->where("userId",auth('api')->user()->id)
-            ->where("tDimensionId",">",8)
+            ->where("tDimensionId",">",7)
             ->where("tDimensionId","<",11)
             ;
         })->delete();
