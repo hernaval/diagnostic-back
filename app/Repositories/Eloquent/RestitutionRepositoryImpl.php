@@ -281,10 +281,6 @@ class RestitutionRepositoryImpl extends BaseRepository implements RestitutionRep
         }
     }
 
-    
-
-    
-
     return $formatted_dimension;
    }
 
