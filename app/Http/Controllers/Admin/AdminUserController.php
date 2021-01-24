@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AdminUserController extends Controller
 {
+    private $userRepo;
+
+    public function __construct(UserRepository $userRepo)
+    {
+        $this->userRepo = $userRepo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,9 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        //
+        $res = $this->userRepo->all();
+
+        return response()->json($res);
     }
 
     /**
