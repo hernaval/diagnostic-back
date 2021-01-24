@@ -56,7 +56,7 @@ Route::group(['prefix' => 'admin'],function(){
     });
 
     Route::group(['prefix' => 'statistiques'], function () {
-        Route::get("restitution/{id}","Admin\StatistiqueController@statByDimension");
+        Route::get("restitution","Admin\StatistiqueController@statByDimension");
     });
 });
 

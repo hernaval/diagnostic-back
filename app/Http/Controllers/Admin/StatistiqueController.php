@@ -16,9 +16,12 @@ class StatistiqueController extends Controller
     }
 
 
-    public function statByDimension($id)
+    public function statByDimension()
     {
-        $res = $this->mesureRepo->statRestitutionByDimension($id);
+        $question = request()->questionnaire;
+
+        
+        $res = $this->mesureRepo->statRestitutionByQuestionnaire($question);
 
         return response()->json($res);
     }

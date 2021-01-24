@@ -19,14 +19,19 @@ class MesureRepositoryImpl extends BaseRepository implements MesureRepository
        parent::__construct($model);
    }
 
-   public function  statRestitutionByDimension($id)
+   public function  statRestitutionByQuestionnaire($question)
    {
-    return DB::table('TMesure')
+
+    if($question=="vision"){
+        return DB::table('TMesure')
         ->join('TRestitution', 'TMesure.id', '=', 'TRestitution.tMesureId')
         ->select('TMesure.id','TRestitution.value',DB::raw('count(TRestitution.value) as total' ) )
-        ->where('TRestitution.tDimensionId',$id)
+        ->where('TRestitution.tDimensionId',">",7)
+        ->where('TRestitution.tDimensionId',"<",11)
         ->groupBy('TMesure.id',"TRestitution.value")
         ->get();
         ;
    }
+    }
+    
 }

@@ -5,5 +5,5 @@ use Illuminate\Support\Collection;
 
 interface MesureRepository
 {
-  public function statRestitutionByDimension($id);
+  public function statRestitutionByQuestionnaire($id);
 }
