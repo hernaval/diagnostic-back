@@ -19,6 +19,7 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $res = $this->userRepo->all();
