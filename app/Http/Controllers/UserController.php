@@ -62,6 +62,13 @@ class UserController extends Controller
             'prenomUser' => 'required',
             'fonctionUser' => 'required',
             'organisationUser' => 'required',
+            'titreUser' => 'required',
+            'typeUser' => 'required',
+            'tailleUser' => 'required',
+            'secteurActiviteUser' => 'required',
+            'paysUser' => 'required',
+            'codePaysUser' => 'required',
+            'telephoneUser' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
