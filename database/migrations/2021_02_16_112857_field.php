@@ -17,9 +17,9 @@ class Field extends Migration
             $table->string("titreUser");
             $table->string("typeUser");
             $table->string("tailleUser");
-            $table->string("secteurActiviteUser");
+            $table->string("secteurUser");
             $table->string("paysUser");
-            $table->string("codePaysUser");
+            $table->string("codeUser");
             $table->string("telephoneUser");
             $table->boolean("isActive")->default(true);
         });
