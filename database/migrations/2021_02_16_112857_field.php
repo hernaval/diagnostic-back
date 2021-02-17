@@ -10,7 +10,8 @@ class Field extends Migration
      * Run the migrations.
      *
      * @return void
-     */
+     */ 
+    
     public function up()
     {
         Schema::table('user', function (Blueprint $table) {
