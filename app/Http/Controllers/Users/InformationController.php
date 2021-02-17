@@ -79,6 +79,11 @@ class InformationController extends Controller
                 return response()->json(['error' => 'wrong password']);
             }
 
+            if($req->password == $req->newPassword){
+                return response()->json(['error' => 'need new password']);
+
+            }
+
             $userToUpdate->password = bcrypt($req->newPassword);
             $userToUpdate->save();
 
