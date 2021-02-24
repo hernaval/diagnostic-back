@@ -90,7 +90,7 @@ class UserController extends Controller
 
             return response()->json(['error' => 'user exist']);
         }
-
+//
         $code = User::randomPass(6);
 
         $newUser = User::create(array_merge(
