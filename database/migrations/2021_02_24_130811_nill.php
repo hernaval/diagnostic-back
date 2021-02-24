@@ -14,14 +14,14 @@ class Nill extends Migration
     public function up()
     {
         Schema::table('user', function (Blueprint $table) {
-            $table->string("titreUser")->nullable();
-            $table->string("typeUser")->nullable();
-            $table->string("tailleUser")->nullable();
-            $table->string("secteurUser")->nullable();
-            $table->string("paysUser")->nullable();
-            $table->string("codeUser")->nullable();
-            $table->string("telephoneUser")->nullable();
-            $table->string("numeroUser")->nullable();
+            $table->string("titreUser")->nullable()->change();
+            $table->string("typeUser")->nullable()->change();
+            $table->string("tailleUser")->nullable()->change();
+            $table->string("secteurUser")->nullable()->change();
+            $table->string("paysUser")->nullable()->change();
+            $table->string("codeUser")->nullable()->change();
+            $table->string("telephoneUser")->nullable()->change();
+            $table->string("numeroUser")->nullable()->change();//
         });
     }
 
