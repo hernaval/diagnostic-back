@@ -68,7 +68,7 @@ class UserController extends Controller
             'secteurUser' => 'required',
             'paysUser' => 'required',
             'codeUser' => 'required',
-            'telephoneUser' => 'required',
+            'numeroUser' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
@@ -97,7 +97,8 @@ class UserController extends Controller
             $validator->validated(),
             [
                 'password' => bcrypt($req->password),
-                'codeConfirmUser' => $code
+                'codeConfirmUser' => $code,
+                'telephoneUser' => $req->codeUser."".$req->numeroUser
             ]
         ));
 
