@@ -91,6 +91,10 @@ class InformationController extends Controller
             $userToUpdate->update($req->all());
         }
 
+        $userToUpdate->telephoneUser = $req->codeUser."".$req->numeroUser;
+        $userToUpdate->save();
+
+
         
 
         return response()->json([
