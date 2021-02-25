@@ -46,6 +46,9 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
     Route::get("","Users\InformationController@show");
     Route::put("","Users\InformationController@update");
     Route::delete("","Users\InformationController@destroy");
+
+    //api for contact
+    Route::post("contact","Support\ContactController@send");
     
 
 });
