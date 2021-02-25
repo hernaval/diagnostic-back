@@ -107,7 +107,7 @@ class UserController extends Controller
         $maildata["code"] = $code;
 
         //\Mail::to($maildata["username"])->send(new \App\Mail\SendCode($maildata)); 
-        file_get_contents("http://frugality.tech/diagnosticMail.php?action=signup&email=$email&code=$code");
+        file_get_contents("http://frugality.tech/diagnosticMail.php?action=signup&email=$email&code=$code&name=$req->prenomUser");
         return response()->json([
             'message' => "user registered",
             "data" => $newUser
@@ -131,8 +131,10 @@ class UserController extends Controller
         $maildata["username"] = $req->email;
         $maildata["code"] = $newCode;
 
-        \Mail::to($maildata["username"])->send(new \App\Mail\SendCode($maildata));
-        
+        //\Mail::to($maildata["username"])->send(new \App\Mail\SendCode($maildata));
+        $name = $req->prenomUser;
+        file_get_contents("http://frugality.tech/diagnosticMail.php?action=signup&email=$email&code=$code&name=$name");
+
         $user->codeConfirmUser = $newCode;
         $user->save();
 
@@ -200,7 +202,8 @@ class UserController extends Controller
         $forgotInfo = $f->createForgotTokenLink($data);
 
         //\Mail::to($email)->send(new \App\Mail\ResetPassword($data));
-        file_get_contents("http://frugality.tech/diagnosticMail.php?action=forgot&email=$email&token=$token");
+        $name = $user->prenomUser;
+        file_get_contents("http://frugality.tech/diagnosticMail.php?action=forgot&email=$email&token=$token&name=$name");
 
         return response()->json([
             'data' => "email send"
