@@ -70,12 +70,20 @@ class InformationController extends Controller
 
     public function changeAvatar(Request $req)
     {
+        $validator =  Validator::make($req->all(),[
+            'avatar' => 'required|image',
+          
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors(), 422);
+        }
         $userToUpdate = auth('api')->user();
 
-        $input = $req->all();
+        
 
-            if(isset($input['avatar']) && $input['avatar']->isFile()){
-                $posterPath = Storage::disk('s3')->put('images', $input["avatar"]);
+            if($request->hasFile("avatar")){
+                $posterPath = Storage::disk('s3')->put('images', $req->avatar);
                 Storage::disk('s3')->setVisibility($posterPath, 'public');
 
                 $userToUpdate->avatar = Storage::disk('s3')->url($posterPath);
@@ -86,7 +94,7 @@ class InformationController extends Controller
                 );
             }else{
                 return response()->json(
-                    ['error' => "error when upload file or missing"]
+                    ['error' => "upload file  missing"]
                 );
             }
 
