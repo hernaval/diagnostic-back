@@ -267,7 +267,7 @@ class UserController extends Controller
         $f->deleteByToken($token);
         $email  = $user->email;
 
-        \Mail::to($email)->send(new \App\Mail\ReinitialisationReussie());
+        //\Mail::to($email)->send(new \App\Mail\ReinitialisationReussie());
 
 
         return response()->json([
