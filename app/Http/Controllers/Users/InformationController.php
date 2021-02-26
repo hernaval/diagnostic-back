@@ -106,6 +106,7 @@ class InformationController extends Controller
     {
          $validator =  Validator::make($req->all(),[
             'password' => 'required',
+            'newPassword' =>'required'
         ]);
 
         if($validator->fails()){
@@ -113,11 +114,21 @@ class InformationController extends Controller
         }
 
         
-        $userToUpdate = auth('api')->user();
+        
+
+            if($userToUpdate->password != bcrypt($req->password)){
+                return response()->json(['error' => 'wrong password']);
+            }
+
+            if($req->password == $req->newPassword){
+                return response()->json(['error' => 'need new password']);
+
+            }
+
+            $userToUpdate->password = bcrypt($req->newPassword);
+            $userToUpdate->save();
 
         
-            $userToUpdate->password = bcrypt($req->password);
-            $userToUpdate->save();
 
             return response()->json([
                 'data' => $userToUpdate
