@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserToArticle extends Model
 {
     protected $guarded = [''];
+    protected $table = 'usersToArticles';
 
     public function user()
     
