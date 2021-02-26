@@ -83,7 +83,7 @@ class InformationController extends Controller
 //
         
 
-            if($request->hasFile("avatar")){
+            if($req->hasFile("avatar")){
                 $posterPath = Storage::disk('s3')->put('images', $req->avatar);
                 Storage::disk('s3')->setVisibility($posterPath, 'public');
 
