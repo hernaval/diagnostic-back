@@ -47,6 +47,8 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
     Route::put("","Users\InformationController@update");
     Route::delete("","Users\InformationController@destroy");
     Route::put("password","Users\InformationController@changePassword");
+    Route::put("avatar","Users\InformationController@changeAvatar");
+
 
     //api for contact
     Route::post("contact","Support\ContactController@send");
