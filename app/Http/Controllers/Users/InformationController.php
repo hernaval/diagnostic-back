@@ -70,6 +70,7 @@ class InformationController extends Controller
 
     public function changeAvatar(Request $req)
     {
+        return response()->json($req);
         $validator =  Validator::make($req->all(),[
             'avatar' => 'required|image',
           
