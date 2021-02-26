@@ -46,9 +46,15 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
     Route::get("","Users\InformationController@show");
     Route::put("","Users\InformationController@update");
     Route::delete("","Users\InformationController@destroy");
+    Route::put("password","Users\InformationController@changePassword");
 
     //api for contact
     Route::post("contact","Support\ContactController@send");
+
+    //api for article
+    Route::post("article","Users\ArticleController@save");
+    Route::get("article","Users\ArticleController@show");
+    Route::delete("article/{id}","Users\ArticleController@save");
     
 
 });
@@ -60,6 +66,12 @@ Route::group(['prefix' => 'admin'],function(){
 
     Route::group(['prefix' => 'statistiques'], function () {
         Route::get("restitution","Admin\StatistiqueController@statByDimension");
+    });
+
+    Route::group(['prefix' => 'article'], function () {
+        Route::post("","Admin\ArticleController@store");
+        Route::get("","Admin\ArticleController@index");
+        Route::delete("/{id}","Admin\ArticleController@index");
     });
 });
 

@@ -102,6 +102,28 @@ class InformationController extends Controller
         ]);
     }
 
+    public function changePassword(Request $req)
+    {
+         $validator =  Validator::make($req->all(),[
+            'password' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors(), 422);
+        }
+
+        
+        $userToUpdate = auth('api')->user();
+
+        
+            $userToUpdate->password = bcrypt($req->password);
+            $userToUpdate->save();
+
+            return response()->json([
+                'data' => $userToUpdate
+            ]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -112,7 +134,7 @@ class InformationController extends Controller
     {
         $token = request()->header('Authorization');
         $userToDelete = auth('api')->user();
-        //$userToDelete->delete();
+        $userToDelete->delete();
 
         auth("api")->invalidate(true);
 
