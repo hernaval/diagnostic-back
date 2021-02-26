@@ -116,9 +116,12 @@ class InformationController extends Controller
         
         $userToUpdate = auth('api')->user();
 
-            if($userToUpdate->password != bcrypt($req->password)){
-                return response()->json(['error' => 'wrong password']);
-            }
+        if (! $token = auth('api')->attempt([
+            'password' => $req->password,
+            'email' => $userToUpdate->email
+        ]) ) {
+            return response()->json(['error' => 'wrong password']);
+        }
 
             if($req->password == $req->newPassword){
                 return response()->json(['error' => 'need new password']);
