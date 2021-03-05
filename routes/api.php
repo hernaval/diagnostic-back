@@ -62,6 +62,31 @@ Route::group(['prefix' => 'user' ,'middleware' => ['api']], function () {
 });
 
 Route::group(['prefix' => 'admin'],function(){
+
+    Route::groupe(['prefix' => "questionnaire"], function(){
+        Route::post("","Admin\QuestionnaireController@store");
+        Route::put("/{id}","Admin\QuestionnaireController@update");
+        Route::get("","Admin\QuestionnaireController@index");
+        Route::get("/{id}","Admin\QuestionnaireController@show");
+        Route::delete("/{id}","Admin\QuestionnaireController@destroy");
+    });
+
+    Route::groupe(['prefix' => "dimension"], function(){
+        Route::post("","Admin\DimensionController@store");
+        Route::put("/{id}","Admin\DimensionController@update");
+        Route::get("","Admin\DimensionController@index");
+        Route::get("/{id}","Admin\DimensionController@show");
+        Route::delete("/{id}","Admin\DimensionController@destroy");
+    });
+
+    Route::groupe(['prefix' => "mesure"], function(){
+        Route::post("","Admin\MesureController@store");
+        Route::put("/{id}","Admin\MesureController@update");
+        Route::get("","Admin\MesureController@index");
+        Route::get("/{id}","Admin\MesureController@show");
+        Route::delete("/{id}","Admin\MesureController@destroy");
+    });
+
     Route::group(['prefix' => 'user'], function () {
         Route::apiResource("","Admin\AdminUserController");
     });
