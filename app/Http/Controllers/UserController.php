@@ -66,9 +66,8 @@ class UserController extends Controller
             'typeUser' => 'required',
             'tailleUser' => 'required',
             'secteurUser' => 'required',
-            'paysUser' => 'required',
-            'codeUser' => 'required',
-            'numeroUser' => 'required',
+            
+           
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
@@ -98,7 +97,7 @@ class UserController extends Controller
             [
                 'password' => bcrypt($req->password),
                 'codeConfirmUser' => $code,
-                'telephoneUser' => $req->codeUser."".$req->numeroUser
+                'telephoneUser' => isset($req->codeUser) ? ($req->codeUser."".$req->numeroUser) : ""
             ]
         ));
 
