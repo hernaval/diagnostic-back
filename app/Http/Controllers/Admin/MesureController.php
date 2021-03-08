@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use \App\Model\TDimension;
+use \App\Model\TMesure;
 use Illuminate\Support\Facades\DB;
 use Validator;
 
@@ -25,7 +25,7 @@ class MesureController extends Controller
     public function index()
     {
         return response()->json(
-            TDimension::all()
+            TMesure::all()
         );
         
     }
@@ -40,7 +40,7 @@ class MesureController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'phraseMesure' =>  'required',
-            "tDimensionId" => "required"
+            "TMesureId" => "required"
             
             
         ]);
@@ -50,7 +50,7 @@ class MesureController extends Controller
         }
 
         return  response()->json(
-            TDimension::create($validator->validated())
+            TMesure::create($validator->validated())
             )    ;
     }
 
@@ -63,7 +63,7 @@ class MesureController extends Controller
     public function show($id)
     {
         return response()->json(
-            TDimension::find($id)
+            TMesure::find($id)
         );
     }
 
@@ -77,7 +77,7 @@ class MesureController extends Controller
     public function update(Request $request, $id)
     {
         return response()->json(
-            TDimension::update($request->all())
+            TMesure::update($request->all())
         );
     }
 
