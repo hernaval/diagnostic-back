@@ -49,7 +49,7 @@ class QuestionnaireController extends Controller
         }
 
         return  response()->json(
-            TQuestionnaire::create()
+            TQuestionnaire::create($validator->validated())
             )    ;
     }
 

@@ -50,7 +50,7 @@ class MesureController extends Controller
         }
 
         return  response()->json(
-            TDimension::create($validator->validated(),)
+            TDimension::create($validator->validated())
             )    ;
     }
 
