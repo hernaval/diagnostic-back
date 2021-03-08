@@ -40,7 +40,7 @@ class MesureController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'phraseMesure' =>  'required',
-            "TMesureId" => "required"
+            "tDimensionId" => "required"
             
             
         ]);
