@@ -66,7 +66,7 @@ class DimensionController extends Controller
         return response()->json(
             DB::table('TDimension')
        ->join('TMesure', 'TMesure.tDimensionId', '=', 'TDimension.id')
-       ->where('TQuestionnaire.id', $id)
+       ->where('TDimension.id', $id)
        ->get()
        
        );
