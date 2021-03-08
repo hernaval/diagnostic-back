@@ -282,7 +282,7 @@ class UserController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 3600060,
+            'expires_in' => \Carbon\Carbon::now()->addDays(7)->timestamp,
             'user' => auth('api')->user()
         ]);
     }
