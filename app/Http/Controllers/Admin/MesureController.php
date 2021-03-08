@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Model\TDimension;
 use Illuminate\Support\Facades\DB;
-
+use Validator;
 
 class MesureController extends Controller
 {

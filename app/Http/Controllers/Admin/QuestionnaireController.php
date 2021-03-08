@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Model\TQuestionnaire;
 use Illuminate\Support\Facades\DB;
-
+use Validator;
 
 
 class QuestionnaireController extends Controller
