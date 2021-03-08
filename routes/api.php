@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admin'],function(){
         Route::get("/{id}","Admin\QuestionnaireController@show");
         Route::delete("/{id}","Admin\QuestionnaireController@destroy");
     });
-
+//
     Route::groupe(['prefix' => "dimension"], function(){
         Route::post("","Admin\DimensionController@store");
         Route::put("/{id}","Admin\DimensionController@update");
