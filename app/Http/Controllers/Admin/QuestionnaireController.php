@@ -41,6 +41,7 @@ class QuestionnaireController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'nomQuestionnaire' => 'required',
+            'jsonQuestionnaire' => "required"
             
         ]);
 
