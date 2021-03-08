@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class NewJsonQi extends Migration
+class NewJsonQi2 extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class NewJsonQi extends Migration
      */
     public function up()
     {
-        Schema::table('TQ', function (Blueprint $table) {
+        Schema::table('TQuestionnaire', function (Blueprint $table) {
             $table->string("jsonQuestionnaire")->nullable();
         });
     }
