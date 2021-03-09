@@ -14,7 +14,7 @@ class NewJsonQi2 extends Migration
     public function up()
     {
         Schema::table('TQuestionnaire', function (Blueprint $table) {
-            $table->string("jsonQuestionnaire")->nullable();
+            $table->text("jsonQuestionnaire")->nullable();
         });
     }
 
@@ -25,8 +25,6 @@ class NewJsonQi2 extends Migration
      */
     public function down()
     {
-        Schema::table('TQ', function (Blueprint $table) {
-            //
-        });
+        
     }
 }
