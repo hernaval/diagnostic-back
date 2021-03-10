@@ -14,4 +14,10 @@ class ActiviteController extends Controller
             Activity::where(['userId' => $id])->get()
         );
     }
+
+    public function destroy()
+    {
+        Activity::all()->delete();
+        return response()->json("success");
+    }
 }
