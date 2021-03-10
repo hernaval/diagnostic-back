@@ -51,7 +51,7 @@ class UserController extends Controller
                 return response()->json(['error' => 'user not confirm']);
             }
 
-            //activity
+            ///activity
             //$this->activit->asignActivityToUser($this->activitType['login_account']);
             $act = new Activity;
             $act->activiteType = "LOGIN_ACCOUNT";
