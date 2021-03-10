@@ -16,8 +16,8 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login', 'register',"confirm","resend","forgotPassword",'validateToken','resetPassword']]);
-        $activity = new Activity;
-        $activityType = Activity::type();
+        $this->activit = new Activity;
+        $this->activitType = Activity::type();
     }
 
     
@@ -52,7 +52,7 @@ class UserController extends Controller
             }
 
             //activity
-            $activity->asignActivityToUser($activityType['login_account']);
+            $this->activit->asignActivityToUser($this->activitType['login_account']);
              
             return $this->createNewToken($token);
          }
@@ -167,7 +167,7 @@ class UserController extends Controller
         $token = auth('api')->attempt($validator->validated());
 
         //activity
-        $activity->asignActivityToUser($activityType['confirm_account']);
+        $this->activit->asignActivityToUser($this->activitType['confirm_account']);
 
 
         return $this->createNewToken($token);
@@ -213,7 +213,7 @@ class UserController extends Controller
         $name = $user->prenomUser;
 
         //activity
-        $activity->asignActivityToUser($activityType['forgot_account']);
+        $this->activit->asignActivityToUser($this->activitType['forgot_account']);
 
         file_get_contents("http://frugality.tech/diagnosticMail.php?action=forgot&email=$email&token=$token&name=$name");
 
@@ -286,7 +286,7 @@ class UserController extends Controller
             
            
         //activity
-        $activity->asignActivityToUser($activityType['reset_account']);
+        $this->activit->asignActivityToUser($this->activitType['reset_account']);
 
 
         //\Mail::to($email)->send(new \App\Mail\ReinitialisationReussie());
