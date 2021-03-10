@@ -13,7 +13,7 @@ class ActivitForeign extends Migration
      */
     public function up()
     {
-        Schema::create('activity', function (Blueprint $table) {
+        Schema::table('activity', function (Blueprint $table) {
             $table->unsignedInteger("userId");
             $table->foreign("userId")->references("id")->on("user");
         });
