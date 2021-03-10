@@ -88,8 +88,11 @@ Route::group(['prefix' => 'admin'],function(){
     });
 
     Route::group(['prefix' => 'user'], function () {
-        Route::apiResource("","Admin\AdminUserController");
+       // Route::apiResource("","Admin\AdminUserController");
         Route::get("/{id}/activity","Admin\ActiviteController@indexUser");
+        Route::get("/{id}","Admin\AdminUserController@show")
+        Route::get("","Admin\AdminUserController@index")
+
     });
 
     Route::group(['prefix' => 'statistiques'], function () {
