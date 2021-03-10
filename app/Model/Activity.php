@@ -20,7 +20,7 @@ class Activity extends Model
             "reset_account" => "RESET_ACCOUNT",
             "confirm_account" => "CONFIRM_ACCOUNT",
             "post_questionnaire" => "POST_QUESTIONNAIRE",
-            "get_restitution" => "GET_QUESTIONNAIRE",
+            "get_questionnaire" => "GET_QUESTIONNAIRE",
             "delete_questionnaire" => "DELETE_QUESTIONNAIRE",
             "put_info" => "PUT_INFO",
             "view_article" => "VIEW_ARTICLE",
