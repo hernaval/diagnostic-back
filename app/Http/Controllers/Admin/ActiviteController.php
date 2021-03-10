@@ -10,7 +10,7 @@ class ActiviteController extends Controller
 {
     public function indexUser($id)
     {
-        if(isset($req->dateStart) && isset($req->dateEnd)){
+        if(request()->dateStart && request()->dateEnd){
             $activity = Activity::where([
                 'created_at', '>=',$req->dateStart,
                 'created_at', "<=", $req->dateEnd
