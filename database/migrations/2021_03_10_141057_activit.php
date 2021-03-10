@@ -16,7 +16,7 @@ class Activit extends Migration
         Schema::create('activity', function (Blueprint $table) {
             $table->increments('id');
             $table->string("activiteType");
-            $table->text("activiteDetail");
+            $table->text("activiteDetail")->nullable();
             $table->timestamps();
         });
     }
