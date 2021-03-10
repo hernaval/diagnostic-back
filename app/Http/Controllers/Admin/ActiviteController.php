@@ -18,7 +18,7 @@ class ActiviteController extends Controller
             ]);
         }
         return response()->json(
-            Activity::where(['userId' => $id])->get()
+            Activity::where(['userId' => $id])->orderBy("created_at","DESC")->get()
         );
     }
 

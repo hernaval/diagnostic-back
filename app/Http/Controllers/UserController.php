@@ -52,8 +52,14 @@ class UserController extends Controller
             }
 
             //activity
-            $this->activit->asignActivityToUser($this->activitType['login_account']);
-             
+            //$this->activit->asignActivityToUser($this->activitType['login_account']);
+            $act = new Activity;
+            $act->activiteType = "LOGIN_ACCOUNT";
+            $act->activiteDetail ="";
+            $act->userId = auth('api')->user()->id;
+            $act->save();
+            
+
             return $this->createNewToken($token);
          }
 
