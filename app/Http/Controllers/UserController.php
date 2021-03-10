@@ -281,7 +281,7 @@ class UserController extends Controller
 
          $token = auth('api')->attempt([
             'email' => $email,
-            'password' => $user->password
+            'password' => $req->password
         ]) ;
             
            
