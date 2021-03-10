@@ -266,12 +266,21 @@ class UserController extends Controller
         $f->deleteByToken($token);
         $email  = $user->email;
 
+         $token = auth('api')->attempt([
+            'email' => $email,
+            'password' => $user->password
+        ]) ;
+            
+           
+        
+
         //\Mail::to($email)->send(new \App\Mail\ReinitialisationReussie());
 
 
         return response()->json([
             'success' => "reset success",
-            'data' => $user
+            'data' => $user,
+            'token' => $token
         ]);
 
         
