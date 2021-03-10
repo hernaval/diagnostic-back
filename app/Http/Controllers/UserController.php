@@ -51,15 +51,8 @@ class UserController extends Controller
                 return response()->json(['error' => 'user not confirm']);
             }
 
-            ///activity
-            //$this->activit->asignActivityToUser($this->activitType['login_account']);
-            $act = new Activity;
-            $act->activiteType = "LOGIN_ACCOUNT";
-            $act->activiteDetail ="";
-            $act->userId = auth('api')->user()->id;
-            $act->save();
-            //
-            
+            //activity
+            $this->activit->asignActivityToUser($this->activitType['login_account']);
 
             return $this->createNewToken($token);
          }
