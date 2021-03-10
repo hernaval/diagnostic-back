@@ -6,7 +6,7 @@ use \App\Repositories\RestitutionRepository;
 
 use Illuminate\Http\Request;
 use Validator;
-use \App\Model\Actitivy;
+use \App\Model\Activity;
 
 class RestitutionController extends Controller
 {
