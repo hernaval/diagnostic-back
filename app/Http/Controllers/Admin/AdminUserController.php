@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use \App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-
+use \App\User;
 class AdminUserController extends Controller
 {
     private $userRepo;
@@ -46,9 +46,11 @@ class AdminUserController extends Controller
      */
     public function show($id)
     {
-        $res = $this->userRepo->findById($id);
+        //$res = $this->userRepo->findById($id);
 
-        return response()->json($res);
+        return response()->json(
+            User::find($id)
+        );
     }
 
     /**
