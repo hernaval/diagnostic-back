@@ -46,7 +46,9 @@ class AdminUserController extends Controller
      */
     public function show($id)
     {
-        //
+        $res = $this->userRepo->findById($id);
+
+        return response()->json($res);
     }
 
     /**

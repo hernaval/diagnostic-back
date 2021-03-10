@@ -26,4 +26,9 @@ class UserRepositoryImpl extends BaseRepository implements UserRepository
    {
        return $this->model->all();    
    }
+
+   public function findById($id) : User
+   {
+       return $this->model->find($id);
+   }
 }

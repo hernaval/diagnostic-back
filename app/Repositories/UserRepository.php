@@ -7,4 +7,5 @@ use Illuminate\Support\Collection;
 interface UserRepository
 {
    public function all(): Collection;
+   public function findById($id) : User;
 }
