@@ -15,8 +15,8 @@ class InformationController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['index']]);
-        $activity = new Activity;
-        $activityType = Activity::type();
+        $this->activit = new Activity;
+        $this->activitType = Activity::type();
 
     }
     /**
@@ -68,7 +68,7 @@ class InformationController extends Controller
         $userToUpdate->save();
 
         //activity
-        $activity->asignActivityToUser($activityType['put_info'],"vision");
+        $this->activit->asignActivityToUser($this->activitType['put_info'],"vision");
 
 
         return response()->json([
