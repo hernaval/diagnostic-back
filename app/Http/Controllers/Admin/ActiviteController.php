@@ -17,7 +17,7 @@ class ActiviteController extends Controller
 
     public function destroy()
     {
-        Activity::all()->delete();
+        Activity::truncate();
         return response()->json("success");
     }
 }
