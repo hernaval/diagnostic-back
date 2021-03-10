@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \App\User;
+use \App\Model\Activity;
 use Illuminate\Support\Facades\Storage;
 use Validator;
 class InformationController extends Controller
@@ -14,6 +15,9 @@ class InformationController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['index']]);
+        $activity = new Activity;
+        $activityType = Activity::type();
+
     }
     /**
      * Display a listing of the resource.
@@ -62,6 +66,10 @@ class InformationController extends Controller
         
         $userToUpdate->telephoneUser = $req->codeUser."".$req->numeroUser;
         $userToUpdate->save();
+
+        //activity
+        $activity->asignActivityToUser($activityType['put_info'],"vision");
+
 
         return response()->json([
             'data' => $userToUpdate

@@ -6,6 +6,7 @@ use \App\Repositories\RestitutionRepository;
 
 use Illuminate\Http\Request;
 use Validator;
+use \App\Model\Actitivy;
 
 class RestitutionController extends Controller
 {
@@ -21,6 +22,9 @@ class RestitutionController extends Controller
         $this->userRepository = $userRepository;
         $this->restitutionRepo = $restitutionRepo;
       
+        $activity = new Activity;
+        $activityType = Activity::type();
+
     }
 
     public function create(Request $req)
@@ -37,6 +41,10 @@ class RestitutionController extends Controller
 
         $this->restitutionRepo->addOrUpdateResponse($validator->validated());
 
+        //activity
+        $activity->asignActivityToUser($activityType['post_questionnaire'],"vision");
+
+
         return response()->json("ok");
     }
 
@@ -52,6 +60,8 @@ class RestitutionController extends Controller
             $restitution = $this->restitutionRepo->userVisionResitution();
         }
        
+       //activity
+       $activity->asignActivityToUser($activityType['get_questionnaire'],"vision");
 
         return response()->json($restitution);
     }
@@ -62,6 +72,10 @@ class RestitutionController extends Controller
 
         
             $this->restitutionRepo->deleteUserRestitution($question);
+
+        //activity
+       $activity->asignActivityToUser($activityType['delele_questionnaire'],"vision");
+
         
             return response()->json("ok deleted");
     }
