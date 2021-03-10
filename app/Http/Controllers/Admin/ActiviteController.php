@@ -12,8 +12,8 @@ class ActiviteController extends Controller
     {
         if(request()->dateStart && request()->dateEnd){
             $activity = Activity::where([
-                'created_at', '>=',$req->dateStart,
-                'created_at', "<=", $req->dateEnd
+                'created_at', '>=',request()->dateStart,
+                'created_at', "<=", request()->dateEnd
             ]);
         }
         return response()->json(
