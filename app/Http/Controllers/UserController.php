@@ -58,6 +58,7 @@ class UserController extends Controller
             $act->activiteDetail ="";
             $act->userId = auth('api')->user()->id;
             $act->save();
+            //
             
 
             return $this->createNewToken($token);
