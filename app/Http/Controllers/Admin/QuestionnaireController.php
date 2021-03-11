@@ -74,12 +74,15 @@ class QuestionnaireController extends Controller
 
     public function get($titre)
     {
+        $qTitre = TQuestionnaire::where(['nomQuestionnaire' => $titre])->first();
         return response()->json(
             DB::table('TQuestionnaire')
        ->join('TDimension', 'TDimension.tQuestionnaireId', '=', 'TQuestionnaire.id')
-       ->where('TQuestionnaire.nomQuestionnaire', "Vision333")
+       ->where('TQuestionnaire.id', $qTitre->id)
        ->get() 
         );
+
+        
        
        
        
