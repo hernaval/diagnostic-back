@@ -136,9 +136,9 @@ class QuestionnaireController extends Controller
     public function deleteByName($titre)
     {
         //delete mesure to dimension to questionnaire
-        $questionnaireToDelete = TQuestionnaire::where([$titre])->first();
+        $questionnaireToDelete = TQuestionnaire::where([$titre])->delete();
 
-       $dimensionToDelete = DB::table('TDimension')
+       /*$dimensionToDelete = DB::table('TDimension')
         ->join('TQuestionnaire', 'TDimension.tQuestionnaireId', '=', 'TQuestionnaire.id')
         ->where('TQuestionnaire.nomQuestionnaire', $questionnaireToDelete->id)
         ->get();
@@ -153,6 +153,8 @@ class QuestionnaireController extends Controller
         }
 
         $dimensionToDelete->delete();
-        $questionnaireToDelete->delete();
+        $questionnaireToDelete->delete(); */
+
+        return response()->json("ok");
     }
 }
