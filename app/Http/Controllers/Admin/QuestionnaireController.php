@@ -82,7 +82,7 @@ class QuestionnaireController extends Controller
 
        return response()->json($titre);
        
-       );
+       
     }
 
     /**
