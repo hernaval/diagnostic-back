@@ -294,7 +294,7 @@ class UserController extends Controller
            
         //activity
         $id = $userToUpdt->id;
-        $this->activit->asignActivityToUser($id,$this->activitType['reset_account']);
+        $this->activit->asignActivityToUser($user->id,$this->activitType['reset_account']);
 
 
         //\Mail::to($email)->send(new \App\Mail\ReinitialisationReussie());
