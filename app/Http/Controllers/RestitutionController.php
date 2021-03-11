@@ -77,7 +77,7 @@ class RestitutionController extends Controller
 
         //activity
         $id = auth('api')->user()->id;
-       $this->activit->asignActivityToUser($id,$this->activitType['delele_questionnaire'],"vision");
+       $this->activit->asignActivityToUser($id,$this->activitType['delete_questionnaire'],"vision");
 
         
             return response()->json("ok deleted");
