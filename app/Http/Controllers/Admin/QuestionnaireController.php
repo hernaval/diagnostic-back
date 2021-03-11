@@ -72,6 +72,17 @@ class QuestionnaireController extends Controller
         );
     }
 
+    public function get($titre)
+    {
+        return response()->json(
+            DB::table('TQuestionnaire')
+       ->join('TDimension', 'TDimension.tQuestionnaireId', '=', 'TQuestionnaire.id')
+       ->where('TQuestionnaire.nomQuestionnaire', $titre)
+       ->get()
+       
+       );
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -100,6 +111,29 @@ class QuestionnaireController extends Controller
        $dimensionToDelete = DB::table('TDimension')
         ->join('TQuestionnaire', 'TDimension.tQuestionnaireId', '=', 'TQuestionnaire.id')
         ->where('TQuestionnaire.id', $id)
+        ->get();
+
+        //delete from tRestitution
+        foreach ($dimensionToDelete as $dimension) {
+            $mesureToDelete = DB::table('TMesure')
+            ->join('TDimension', 'TDimension.id', '=', 'TMesure.tDimensionId')
+            ->where('TDimension.id', $dimension->id)
+            ->delete();
+            # code...
+        }
+
+        $dimensionToDelete->delete();
+        $questionnaireToDelete->delete();
+    }
+    
+    public function deleteByName($titre)
+    {
+        //delete mesure to dimension to questionnaire
+        $questionnaireToDelete = TQuestionnaire::where([$titre])->first();
+
+       $dimensionToDelete = DB::table('TDimension')
+        ->join('TQuestionnaire', 'TDimension.tQuestionnaireId', '=', 'TQuestionnaire.id')
+        ->where('TQuestionnaire.nomQuestionnaire', $questionnaireToDelete->id)
         ->get();
 
         //delete from tRestitution

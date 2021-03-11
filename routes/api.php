@@ -68,7 +68,9 @@ Route::group(['prefix' => 'admin'],function(){
         Route::put("/{id}","Admin\QuestionnaireController@update");
         Route::get("","Admin\QuestionnaireController@index");
         Route::get("/{id}","Admin\QuestionnaireController@show");
+        Route::get("/get/{id}","Admin\QuestionnaireController@get");
         Route::delete("/{id}","Admin\QuestionnaireController@destroy");
+        Route::delete("/del/{titre}","Admin\QuestionnaireController@deleteByName");
     });
 //
     Route::group(['prefix' => "dimension"], function(){
