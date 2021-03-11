@@ -52,7 +52,8 @@ class UserController extends Controller
             }
 
             //activity
-            $this->activit->asignActivityToUser($this->activitType['login_account']);
+            $id = auth('api')->user()->id;
+            $this->activit->asignActivityToUser($id,$this->activitType['login_account']);
 
             return $this->createNewToken($token);
          }
@@ -112,6 +113,11 @@ class UserController extends Controller
 
         //\Mail::to($maildata["username"])->send(new \App\Mail\SendCode($maildata)); 
         file_get_contents("http://frugality.tech/diagnosticMail.php?action=signup&email=$email&code=$code&name=$req->prenomUser");
+
+        $id = $newUser->id;
+        $this->activit->asignActivityToUser($id,$this->activitType['register_account']);
+
+
         return response()->json([
             'message' => "user registered",
             "data" => $newUser
@@ -167,7 +173,8 @@ class UserController extends Controller
         $token = auth('api')->attempt($validator->validated());
 
         //activity
-        $this->activit->asignActivityToUser($this->activitType['confirm_account']);
+        $id = $user->id;
+        $this->activit->asignActivityToUser($id,$this->activitType['confirm_account']);
 
 
         return $this->createNewToken($token);
@@ -212,8 +219,8 @@ class UserController extends Controller
         //\Mail::to($email)->send(new \App\Mail\ResetPassword($data));
         $name = $user->prenomUser;
 
-        //activity
-        //$this->activit->asignActivityToUser($this->activitType['forgot_account']);
+        $id = $user->id;
+        $this->activit->asignActivityToUser($id,$this->activitType['forgot_account']);
 
         file_get_contents("http://frugality.tech/diagnosticMail.php?action=forgot&email=$email&token=$token&name=$name");
 
@@ -286,7 +293,8 @@ class UserController extends Controller
             
            
         //activity
-        $this->activit->asignActivityToUser($this->activitType['reset_account']);
+        $id = $userToUpdt->id;
+        $this->activit->asignActivityToUser($id,$this->activitType['reset_account']);
 
 
         //\Mail::to($email)->send(new \App\Mail\ReinitialisationReussie());

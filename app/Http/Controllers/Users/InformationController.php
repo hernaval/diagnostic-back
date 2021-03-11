@@ -68,7 +68,8 @@ class InformationController extends Controller
         $userToUpdate->save();
 
         //activity
-        $this->activit->asignActivityToUser($this->activitType['put_info'],"vision");
+        $id = auth('api')->user()->id;
+        $this->activit->asignActivityToUser($id,$this->activitType['put_info'],"vision");
 
 
         return response()->json([

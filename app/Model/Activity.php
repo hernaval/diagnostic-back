@@ -36,10 +36,10 @@ class Activity extends Model
         return $this->belongsTo(\App\User::class);
     }
 
-    public function asignActivityToUser($type, $detail="act")
+    public function asignActivityToUser($user, $type, $detail="act")
     {
         return Activity::create([
-            'userId' => auth('api')->user()->id,
+            'userId' => $user,
             'activiteType' => $type,
             'activiteDetail' => $detail
         ]);

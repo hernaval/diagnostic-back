@@ -42,7 +42,8 @@ class RestitutionController extends Controller
         $this->restitutionRepo->addOrUpdateResponse($validator->validated());
 
         //activity
-        $this->activit->asignActivityToUser($this->activitType['post_questionnaire'],"vision");
+        $id = auth('api')->user()->id;
+        $this->activit->asignActivityToUser($id,$this->activitType['post_questionnaire'],"vision");
 
 
         return response()->json("ok");
@@ -61,7 +62,8 @@ class RestitutionController extends Controller
         }
        
        //activity
-       $this->activit->asignActivityToUser($this->activitType['get_questionnaire'],"vision");
+       $id = auth('api')->user()->id;
+       $this->activit->asignActivityToUser($id,$this->activitType['get_questionnaire'],"vision");
 
         return response()->json($restitution);
     }
@@ -74,7 +76,8 @@ class RestitutionController extends Controller
             $this->restitutionRepo->deleteUserRestitution($question);
 
         //activity
-       $this->activit->asignActivityToUser($this->activitType['delele_questionnaire'],"vision");
+        $id = auth('api')->user()->id;
+       $this->activit->asignActivityToUser($id,$this->activitType['delele_questionnaire'],"vision");
 
         
             return response()->json("ok deleted");
