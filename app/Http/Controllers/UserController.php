@@ -213,7 +213,7 @@ class UserController extends Controller
         $name = $user->prenomUser;
 
         //activity
-        $this->activit->asignActivityToUser($this->activitType['forgot_account']);
+        //$this->activit->asignActivityToUser($this->activitType['forgot_account']);
 
         file_get_contents("http://frugality.tech/diagnosticMail.php?action=forgot&email=$email&token=$token&name=$name");
 
