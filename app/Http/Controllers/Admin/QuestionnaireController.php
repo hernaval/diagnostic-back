@@ -103,9 +103,9 @@ class QuestionnaireController extends Controller
 
         
         return response()->json(
-            $qTUpdat->update($request->all());
+            $qTUpdat->update($request->all())
         );
-    }
+    }//
 
     /**
      * Remove the specified resource from storage.
