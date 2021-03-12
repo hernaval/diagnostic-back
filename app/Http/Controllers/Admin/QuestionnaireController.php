@@ -99,8 +99,11 @@ class QuestionnaireController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $qTUpdat = TQuestionnaire::find($id);
+
+        
         return response()->json(
-            TQuestionnaire::update($request->all())
+            $qTUpdat->update($request->all());
         );
     }
 
